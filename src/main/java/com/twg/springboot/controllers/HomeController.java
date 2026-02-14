@@ -48,29 +48,30 @@ public class HomeController {
 	}
 	
 	@PostMapping("authenticate")
-	public String authenticateUser(@ModelAttribute("user") User user,Model model) {
-		String viewname="loginpage";
-		User user1=userService.findByUsername(user.getUsername());
-		
-		if(user1!=null && user.getPassword().equals(user1.getPassword())) {
-			viewname="userhomepage";
-			model.addAttribute("user",user1);
-			
-			session.setAttribute("user",user1);
-			List<Entry> entries=null;
-			try {
-				entries=entryService.findByUserId(user1.getId());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			model.addAttribute("entrieslist",entries);
-			
-			
-		}
-		
-		return viewname;
+	public String authenticateUser(@ModelAttribute("user") User user, Model model) {
+
+	    if (user.getUsername() == null || user.getUsername().isBlank()
+	        || user.getPassword() == null || user.getPassword().isBlank()) {
+
+	        model.addAttribute("error", "Username and password are required");
+	        return "loginpage";
+	    }
+
+	    User user1 = userService.findByUsername(user.getUsername());
+
+	    if (user1 != null && user.getPassword().equals(user1.getPassword())) {
+	        session.setAttribute("user", user1);
+
+	        List<Entry> entries = entryService.findByUserId(user1.getId());
+	        model.addAttribute("entrieslist", entries);
+
+	        return "userhomepage";
+	    }
+
+	    model.addAttribute("error", "Invalid username or password");
+	    return "loginpage";
 	}
+
 	
 	  @GetMapping("addentry")
 	  public String addentry() {
