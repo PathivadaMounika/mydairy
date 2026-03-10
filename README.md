@@ -11,40 +11,10 @@ Features
 * Session management & logout
 ---------------------------------------------------------------------------------------------------------------------------
 Tech Stack
-LayerTechnologyFrontendJSP, HTML, CSS, BootstrapBackendJava
-Spring MVCORMJPA (Hibernate)DatabaseMySQLServerApache TomcatBuild ToolMaven
+* LayerTechnologyFrontendJSP
+* HTML, CSS, BootstrapBackendJava
+* Spring MVCORMJPA (Hibernate)DatabaseMySQLServerApache TomcatBuild ToolMaven
 ----------------------------------------------------------------------------------------------------------------------------
-Project Structure
-MyDiary/
-├── src/
-│   └── main/
-│       ├── java/
-│       │   └── com/mydiary/
-│       │       ├── controller/
-│       │       │   ├── AuthController.java
-│       │       │   └── DiaryController.java
-│       │       ├── model/
-│       │       │   ├── User.java
-│       │       │   └── DiaryEntry.java
-│       │       ├── repository/
-│       │       │   ├── UserRepository.java
-│       │       │   └── DiaryRepository.java
-│       │       └── service/
-│       │           ├── UserService.java
-│       │           └── DiaryService.java
-│       ├── resources/
-│       │   └── application.properties
-│       └── webapp/
-│           └── WEB-INF/
-│               └── views/
-│                   ├── register.jsp
-│                   ├── login.jsp
-│                   ├── home.jsp
-│                   ├── create.jsp
-│                   └── edit.jsp
-├── pom.xml
-└── README.md
---------------------------------------------------------------------------------------------------------------------------------
 Prerequisites
  Make sure you have the following installed:
 
